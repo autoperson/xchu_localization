@@ -1,0 +1,60 @@
+# init method rviz or gps
+align_method: 1  # 0 ndt_autoware 1 ndt_omp
+
+# imu /odom param
+use_odom: true
+use_imu: true
+imu_upside_down: false
+
+# points range
+min_scan_range: 2
+max_scan_range: 100
+circle_radius: 100
+
+# reg
+cover: 10
+
+# ndt
+res: 2.0
+iter: 30
+epsilon: 0.01
+step: 0.1
+scoreThreshold: 3 # 注意这个autoware ndt算出来的score较小
+iterThreshold: 30
+
+# map 其他地图LLA 114.044083877  22.6523610167   67.831
+origin_longitude: 114.045642255
+origin_latitude: 22.663029715
+origin_altitude: 59.620000000000005
+
+map_topic: "/points_map"
+path: "/home/xchu/vector_map_data/points_map/fsk"
+map: "map.pcd"
+g2o: "pose_graph.g2o"
+origin: "origin.txt"
+
+# topic list
+imu_topic: "/imu/data"
+odom_topic: "/golfcar/odom"
+gps_topic: "/novatel718d/pos"
+heading_topic: "/novatel718d/heading"
+#lidar_topic: "/top/rslidar_points"
+lidar_topic: "/filtered_points"
+
+
+
+# others
+log_path: "/home/xchu/workspace/init_ws/src/log/"
+
+
+# scan matching nodelet
+keyframe_delta_trans: 2.5
+keyframe_delta_angle: 1.0
+keyframe_delta_time: 5.0
+transform_thresholding: false
+max_acceptable_trans: 2.0
+max_acceptable_angle: 1.0
+registration_method: "NDT_OMP"
+ndt_resolution: 2.0
+ndt_num_threads: 8
+ndt_nn_search_method: "DIRECT7"

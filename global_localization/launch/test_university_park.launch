@@ -1,0 +1,30 @@
+<launch>
+    <param name="/use_sim_time" value="true"/>
+
+    <include file="$(find vehicle_description)/launch/lexus.launch"/>
+
+    <arg name="path" default="/home/xchu/vector_map_data/points_map/daxueyuan"/>
+    <arg name="map" default="map.pcd"/>
+    <arg name="g2o" default="pose_graph.g2o"/>
+    <arg name="origin" default="origin.txt"/>
+
+    <!-- points map_loader -->
+    <node pkg="global_localization" type="points_prefilter_node" name="points_prefilter_node" output="screen">
+        <rosparam file="$(find global_localization)/params/prefilter.yaml" command="load"/>
+    </node>
+    <!--    <node pkg="global_localization" type="gps_init" name="gps_init" args="$(arg path)/$(arg origin) $(arg path)/$(arg map)" output="screen">-->
+    <!--        <remap from="/gps/pos" to="/novatel718d/pos"/>-->
+    <!--        <remap from="/gps/heading" to="/novatel718d/heading"/>-->
+    <!--    </node>-->
+    <node pkg="global_localization" type="global_localization_node" name="global_localization_node"
+          args="$(arg path)/$(arg map) $(arg path)/$(arg g2o)" output="screen">
+        <rosparam file="$(find global_localization)/params/daxueyuan.yaml" command="load"/>
+    </node>
+    <!--    <node pkg="global_localization" type="scan_context_node" name="scan_context_node" output="screen">-->
+    <!--&lt;!&ndash;        <rosparam file="$(find global_localization)/params/prefilter.yaml" command="load"/>&ndash;&gt;-->
+    <!--    </node>-->
+
+    <node pkg="rviz" type="rviz" name="rviz" output="screen"
+          args="-d $(find global_localization)/rviz/university_park.rviz"/>
+
+</launch>

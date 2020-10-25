@@ -1,0 +1,12 @@
+
+downsample_method: "VOXELGRID"  # APPROX_VOXELGRID
+downsample_resolution: 0.1
+
+outlier_removal_method: "RADIUS"
+use_distance_filter: true
+distance_near_thresh: 1.0
+distance_far_thresh: 100
+
+#points_topic: "/velodyne_points"
+points_topic: "/top/rslidar_points"
+

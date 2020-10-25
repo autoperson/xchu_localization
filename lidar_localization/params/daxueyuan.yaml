@@ -1,0 +1,41 @@
+# init method rviz or gps
+align_method: 0  # 0 ndt_autoware 1 ndt_omp
+
+# imu /odom param
+use_odom: false
+use_imu: false
+imu_upside_down: false
+
+# points range
+min_scan_range: 0
+max_scan_range: 75
+circle_radius: 200
+
+# vox
+scan_leaf: 1.0
+map_leaf: 1.0
+
+# reg
+cover: 40
+
+# ndt
+res: 2.0
+iter: 50
+epsilon: 0.01
+step: 0.1
+scoreThreshold: 0.05 # 注意这个autoware ndt算出来的score较小
+
+# map 其他地图LLA 114.044083877  22.6523610167   67.831
+origin_longitude: 113.93850999999999
+origin_latitude: 22.533571666666667
+origin_altitude: 7.5
+
+map_topic: /points_map
+path: /media/xchu/a9e56f7c-bf38-4e4e-8459-9d292c44a294/data/map/daxueyuan/map.pcd
+
+# topic list
+imu_topic: /imu/data
+odom_topic: /golfcar/odom
+gps_topic: /novatel718d/pos
+heading_topic: /novatel718d/heading
+lidar_topic: /velodyne_points

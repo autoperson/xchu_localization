@@ -1,0 +1,14 @@
+<launch>
+    <param name="/use_sim_time" value="true"/>
+    <node pkg="rviz" type="rviz" name="rviz" output="screen"
+          args="-d $(find global_localization)/rviz/university_park.rviz"/>
+
+    <include file="$(find vehicle_description)/launch/lexus.launch"/>
+
+    <!-- points map_loader -->
+    <include file="$(find map_loader)/launch/points_map_loader.launch"/>
+
+    <node pkg="global_localization" type="sc_localization_node" name="sc_localization_node" output="screen">
+        <!--        <rosparam file="$(find global_localization)/params/prefilter.yaml" command="load"/>-->
+    </node>
+</launch>

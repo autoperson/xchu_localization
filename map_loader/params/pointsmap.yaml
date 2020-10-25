@@ -1,0 +1,14 @@
+
+# points range
+circle_radius: 150
+
+# map 其他地图LLA 114.044083877  22.6523610167   67.831
+origin_longitude: 114.045642255
+origin_latitude: 22.663029715
+origin_altitude: 59.620000000000005
+
+path: /media/xchu/a9e56f7c-bf38-4e4e-8459-9d292c44a294/data/map/fushikang/map.pcd
+
+# topic list
+gps_topic: /novatel718d/pos
+

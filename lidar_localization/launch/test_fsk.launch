@@ -1,0 +1,23 @@
+<launch>
+<!--    <param name="/use_sim_time" value="true"/>-->
+<!--    <node pkg="rviz" type="rviz" name="rviz" output="screen"-->
+<!--          args="-d $(find lidar_localization)/rviz/map_localization.rviz"/>-->
+
+<!--    <include file="$(find vehicle_description)/launch/lexus.launch"/>-->
+
+    <!-- points map loader-->
+    <include file="$(find map_loader)/launch/points_map_loader.launch"/>
+
+    <include file="$(find global_localization)/launch/test_fsk.launch"/>
+
+    <!-- 初始化节点-->
+    <!--    <node pkg="global_localization" type="global_localization_node" name="global_localization" output="screen">-->
+    <!--        <rosparam file="$(find global_localization)/params/fsk.yaml" command="load"/>-->
+    <!--    </node>-->
+
+    <!-- 定位节点 -->
+    <node pkg="lidar_localization" type="lidar_localization_node" name="lidar_localization" output="screen">
+        <rosparam file="$(find lidar_localization)/params/fsk.yaml" command="load"/>
+    </node>
+
+</launch>
